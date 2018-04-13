@@ -214,7 +214,7 @@
 \newcommand{\ondt}{1_{\cdot}}
 \newcommand{\onst}{1_{\star}}
 \newcommand{\bdy}{\partial}
-\newcommand{\im}{\mathrm{im}}
+\DeclareMathOperator{\im}{{im}}
 \newcommand{\re}{\mathrm{re}}
 \newcommand{\oX}{\overline{X}}
 \newcommand{\ox}{\overline{x}}
@@ -241,72 +241,21 @@
 \makeatother
 \begin{document}
 \maketitle
-\prob{1} \begin{proposition*}
-	Let $X$ and $Y$ be compact, connected smooth $d$-manifolds and let $f:X\to Y$ be a smooth submersion. Then, $f$ is a covering map. 
-\end{proposition*}
-\begin{proof}
-As $f$ is a submersion, we have that at each point $x\in X$, $\d f_x: TX_x\to TY_{f(x)} $ is surjective, i.e. of rank $d$. As $TX_x$ is of dimension $d$, we have that $\d f_x$ is an isomorphism for all $x\in X$. By the inverse function theorem, $f$ is then a local diffeomorphism everywhere. We let $y\in Y$ and claim that $f^{-1}(y)$ is a finite set. As $f$ is a local diffeomorphism, for each $x\in f^{-1}(y)$, there is some open neighborhood $U_x\ni x$ such that $\restr{f}{U_x}$ is a diffeomorphism. Note that necessarily, $f^{-1}(y)\cap U_x=\{x\}$ by bijectivity. We let $x\in V_x\subsetneq U_x$ with $V_x$ open and let $V=(\bigcup_{x\in f^{-1}(y)}V_x)^c$. Then, $\{V\}\bigcup \{U_x\}_{x\in f^{-1}(y)}$ is an open cover of $X$ and hence has a finite subcover by compactness. However, $\bigcup_{x\in f^{-1}(y)}U_x$ is an irredundant union by our observations above and hence $f^{-1}(y)$ is a finite set. As such, we may choose each $U_x$ such that $U_x\cap U_{x'}=\emptyset$ for $x\neq x'$. We let $U=\bigcap_{x\in f^{-1}(y)}f(U_x)$. As $U$ is a finite union of open sets, $U$ is open. Furthermore, as each component of $f^{-1}(U)$ is contained in some set $U_x$, we have that $f$ is diffeomorphic on each component of $f^{-1}(U)$. Finally, as the $U_x$ are disjoint, we have that the preimages of $U$ are disjoint. Thus, $f$ is a covering map.
-\end{proof}
-\prob{2}
-\begin{notation}
-	
-		Throughout this problem, we let $\avec{v_i}=\begin{bmatrix}
-		v_{i1}&v_{i2}&\dots&v_{in}
-		\end{bmatrix}^T\in \RR^n$ and $\vec{v}=(\avec{v_1},\dots,\avec{v_k})\in (\RR^n)^{\times k}$, with identical notational standards for $\vec{w}$ and each $\avec{w_i}$. To emphasize this point, we shall think of $(\RR^n)^{\times k}$ as a space of row vectors with each entry a column vector.
-\end{notation}
+\prob{1}
 \prt{1}
 \begin{proposition*}
-	Let $S=\{(\avec{v_1},\dots,\avec{v_k})\;:\;\dim\idl{\avec{v_1},\dots,\avec{v}_k}=k\}\subset (\RR^n)^{\times k}$. $S$ is an open set. 
-\end{proposition*}\begin{proof}
-We let $\vec{v}$ be an arbitrary multivector satisfying our stated independence condition. We let $V=(v_{ij})\in \mathrm{Mat}_{n,k}\cong \RR^{nk}$. Then, as the $\avec{v_i}$ are linearly independent, we have that $\mathrm{rank}(V)=k$. Thus, there exists some $I=(i_1,\dots,i_k)$ with $1\leq i_1<\dots<i_k\leq n$ such that the minor $\Delta_I$ taken on rows $i_1,\dots i_k$ has $\Delta_I(V)\neq 0$. As $\Delta_I$ is a polynomial in the entires of $V$, it is a continuous function. We let $d=\Delta_I(V)$. Then, letting $0<\epsilon<d$, we have that $\Delta_I^{-1}((d-\epsilon,d+\epsilon))$ is an open set in $(\RR^{n})^{\times k}$ contained within $S$. As $\vec{v}$ was an arbitrary element of $S$, we now have that $S$ is an open set.\end{proof}
-\prt{2} \begin{proposition*}
-	We let $\sigma: (\RR\setminus \{0\})^k \times S\to \RR^n$ be the map $\sigma:[(t_1,\dots,t_k),(\avec{v_1},\dots,\avec{v_k})]\mapsto \sum_{i=1}^kt_i\avec{v_i}$. Then, $\sigma$ is a submersion.
+	We let $W$ be a compact $2$-manifold embedded in $\RR^3$ with smooth boundary $\del W$ a closed curve. Then, $$\int_W \left(\pydx{g}{x}-\pydx{f}{y} \right)\d x \d y=\int_{\del W}f\d x+g\d y$$
 \end{proposition*}
 \begin{proof}
-	We note $Z:=(\RR\setminus \{0\})^k \times S$ is the product of an open set in $\RR^k$ with one in $\RR^{n*k}$ and thus $Z\subset \RR^{(n+1)k}$ is open. Thus, we may take the entirety of $Z$ to be a coordinate chart equipped with the identity map. Under this parametrization, we have that for some ordering of $[k]\times [n]$ $\{(\ell m)_j\}_{j\in[(n+1)k]\setminus[k]}$, \begin{equation*}(\d \sigma)_{ij}=\begin{cases}\pydx{\sigma_i}{t_j}&j\leq k\\
-	\pydx{\sigma_i}{v_{(\ell m)_j}}&j>k\end{cases}=\begin{cases}v_{ji
-	}&j\leq k\\
-	t_{\ell_j}&j>k\,\&\,m_j=i\\0&j>k\,\&\,m_j\neq i\end{cases}\end{equation*} 
-	Then, in particular, letting $I$ be the set of row-indices corresponding to $v_{jj}$ with $j$ ranging over $[n]$, we have that the submatrix corresponding to $I$ is $$\begin{bmatrix}t_1&&\\
-	&\ddots&\\
-	&&t_k\end{bmatrix},$$  and hence $\Delta_I(\d \sigma)=t_1\dots t_k$. As each $t_i\neq 0$, we have that $\Delta_I(\d\sigma)\neq0$ and hence $\d \sigma$ has rank $n$ and is indeed surjective. Thus, $\sigma$ is a submersion.
-%	$$\begin{bmatrix}
-%
-%	|&&|&\\
-%	v_1&\dots&v_k\\
-%	|&&|
-%	\end{bmatrix}$$
+	We let $\omega=f \d x+g \d y$. Then, $\d \omega= \pydx{f}{x}\d x\wedge \d x+ \pydx{f}{y}\d y \wedge \d x+\pydx {g}{x}\d x \wedge \d y+\pydx{g}{y}\d y \wedge \d y=\left(\pydx{g}{x}-\pydx{f}{y}\right)$. A straightforward application of Stoke's theorem then yields the desired result.
 \end{proof}
 \prt{3}
-\begin{proposition*}
-	$GL_k(\RR)$ acts on $S$ by the action \[ A(v_1,v_2,\dots,v_k)=(\sum_{j}a_{1j}v_j,\sum_{j}a_{2j}v_j\dots,\sum_ja_{kj}v_j).\] The orbits of the $\gl_k(\RR)$-action on $S$ are in bijection with the $k$-dimensional linear subspaces of $\RR^n$.\end{proposition*}
-\begin{proof}
-	We first construct a map $\Phi$ on the set of orbits of the $\gl_k(\RR)$-action on $S$ to the set of $k$-dimensional linear subspaces of $\RR^n$.
-	We let $\vec{v}\in S$. Then, as $\avec{v_1},\dots,\avec{v_k}$ are linearly independent, they span a $k$-dimensional linear subspace of $\RR^n$. We let $\Phi([\vec{v}])=\spn(\vec{v})$. To show this is well-defined, we let $\vec{w}=A\vec{v}$. Then, $\vec{v}=A^{-1}\vec{w}$, so each $\avec{v_i}$ may be written as a combination of the $\avec{w_j}$'s and vice versa. Thus $\spn \vec{v}=\spn\vec{w}$, so $\Phi$ is well-defined.
-	
-	To construct an inverse to $\Phi$, we let $\Psi$ be any splitting map to $\Phi$. To show that $\Psi$ is indeed an inverse, we suppose $\spn \vec{v}=\spn\vec{w}$. Then, we may write $\avec{w_i}=\sum_kb_{ik}v_k$ for some coefficients $b_{ik}$. Similarly, we may write $\avec{v_i}=\sum_ka_{ik}w_k$. Thus, $AB=1=BA$, so $A\in \gl_k(\RR^n)$ and $[\vec{v}]=[\vec{w}]$ so indeed $\Psi$ is surjective and hence an inverse to $\Phi$.
 
-\end{proof}
-\prt{4}
+\prob{3}
 \begin{proposition*}
-	Let $X$ be any submanifold of $\RR^n$. Let $Q\subset S$ be the set of $(v_1,\dots,v_k)$ which have span which intersect $X$ transversally. Show that $Q$ is dense in $S$.  
-\end{proposition*}
-
-\prob{3}\begin{prompt*}
-	For $V\cong \RR^n$ and $W\cong \RR^m$, we write $f(v_i)=\sum_j a_{ij}w_j$ where the set of $\{v_i\}$ form a basis for $V$ and $\{w_i\}$ one for $W$. Find the matrix for $\extp^2 f$.
-\end{prompt*}
-\begin{proof}[Response]
-	We have that \begin{align*}\extp^2f(v_i\wedge v_k)&=\left(\sum_ja_{ij}w_j\right)\wedge \left(\sum_{\ell}a_{k\ell}w_{\ell}\right)\\
-	&=\sum_{j,k}a_{ij}a_{k\ell}(w_j\wedge w_\ell)\\
-	&=\sum_{j<k}\left(a_{ij}a_{k\ell}-a_{i\ell}a_{kj}\right)(w_j\wedge w_\ell)
-		\end{align*}
-		Hence, $\left(\extp^2f\right)_{(i,k)(j,\ell)}=a_{ij}a_{k\ell}-a_{i\ell}a_{kj}$
-\end{proof}
-\prt{2}\begin{proposition*}
-	The map $\extp^2:\hom(V,W)\to \hom(\extp^2V,\extp^2W)$ is smooth.
-\end{proposition*}
-\begin{proof}
-	$\hom(V,W)\cong \RR^{nm}$ and $\hom(\extp^2V,\extp^2W)\cong \RR^{{n\choose 2}{m\choose 2}}$ by realizing each element as a matrix for fixed bases of each vector space. Hence, each space is its own coordinate chart. As we have now shown $\extp^2$ to be a polynomial function, it is thus smooth.
+	We let $X$ be a compact $m$-manifold, and $Z$ a $k$-submanifold with no boundary. If $\omega\equiv \omega '\mod \im d$ (i.e. $\omega$ and $\omega'$ are cohomologous), then $\int_Z\omega=\int_Z\omega'$.
+\end{proposition*}\begin{proof}
+We have that there is some $\alpha\in \Omega^{k-1}(X)$ such that $\omega-\omega'=d\alpha$. Thus, $\int_Z\omega-\int_Z\omega'=\int_Z(\omega-\omega')=\int_Z \d\alpha$. By Stokes' theorem, we have that $\int_Z\d \alpha=\int_{\del Z}\alpha$. However, any form integrated over $\del Z=\emptyset$ has integral 0, so we now have that $\int_Z (\omega-\omega')=0$ thus yielding our desired result.
 \end{proof}
 
 \end{document}
