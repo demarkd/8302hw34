@@ -1,0 +1,312 @@
+\documentclass[english]{article}
+\newcommand{\G}{\overline{C_{2k-1}}}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb,mathabx}
+\usepackage{lmodern}
+\usepackage{mathtools}
+\usepackage[inline]{enumitem}
+\usepackage{relsize}
+\usepackage{tikz-cd}
+%\usepackage{natbib}
+%\bibliographystyle{plainnat}
+%\setcitestyle{authoryear,open={(},close={)}}
+\let\avec=\vec
+\renewcommand\vec{\mathbf}
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}}
+\newcommand{\pydx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dydx}[2]{\frac{\d #1}{\d #2}}
+\newcommand{\ddx}[1]{\frac{\d{}}{\d{#1}}}
+\newcommand{\hk}{\hat{K}}
+\newcommand{\hl}{\hat{\lambda}}
+\newcommand{\ol}{\overline{\lambda}}
+\newcommand{\om}{\overline{\mu}}
+\newcommand{\all}{\text{all }}
+\newcommand{\valph}{\vec{\alpha}}
+\newcommand{\vbet}{\vec{\beta}}
+\newcommand{\vT}{\vec{T}}
+\newcommand{\vN}{\vec{N}}
+\newcommand{\vB}{\vec{B}}
+\newcommand{\vX}{\vec{X}}
+\newcommand{\vx}{\vec {x}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vxs}{\vec {x}^*}
+\newcommand{\vV}{\vec{V}}
+\newcommand{\vTa}{\vec{T}_\alpha}
+\newcommand{\vNa}{\vec{N}_\alpha}
+\newcommand{\vBa}{\vec{B}_\alpha}
+\newcommand{\vTb}{\vec{T}_\beta}
+\newcommand{\vNb}{\vec{N}_\beta}
+\newcommand{\vBb}{\vec{B}_\beta}
+\newcommand{\bvT}{\bar{\vT}}
+\newcommand{\ka}{\kappa_\alpha}
+\newcommand{\ta}{\tau_\alpha}
+\newcommand{\kb}{\kappa_\beta}
+\newcommand{\tb}{\tau_\beta}
+\newcommand{\hth}{\hat{\theta}}
+\newcommand{\evat}[3]{\left. #1\right|_{#2}^{#3}}
+\newcommand{\restr}[2]{\evat{#1}{#2}{}}
+\newcommand{\prompt}[1]{\begin{prompt*}
+		#1
+\end{prompt*}}
+\newcommand{\vy}{\vec{y}}
+\DeclareMathOperator{\sech}{sech}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\newcommand{\dis}[1]{\begin{align}
+	#1
+	\end{align}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\Ss}{\mathcal{S}}
+\newcommand{\BB}{\mathcal{B}}
+\usepackage{graphicx}
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+%\makeatletter
+%\let\oldabs\abs
+%\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+%\let\oldnorm\norm
+%\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+%\makeatother
+\newenvironment{subproof}[1][\proofname]{%
+	\renewcommand{\qedsymbol}{$\blacksquare$}%
+	\begin{proof}[#1]%
+	}{%
+	\end{proof}%
+}
+
+\usepackage{centernot}
+\usepackage{dirtytalk}
+\usepackage{calc}
+\newcommand{\prob}[1]{\setcounter{section}{#1-1}\section{}}
+
+
+\newcommand{\prt}[1]{\setcounter{subsection}{#1-1}\subsection{}}
+\newcommand{\pprt}[1]{{\textit{{#1}.)}}\newline}
+\renewcommand\thesubsection{\alph{subsection}}
+\usepackage[sl,bf,compact]{titlesec}
+\titlelabel{\thetitle.)\quad}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\makeatletter
+
+\newcommand*\pFqskip{8mu}
+\catcode`,\active
+\newcommand*\pFq{\begingroup
+	\catcode`\,\active
+	\def ,{\mskip\pFqskip\relax}%
+	\dopFq
+}
+\catcode`\,12
+\def\dopFq#1#2#3#4#5{%
+	{}_{#1}F_{#2}\biggl(\genfrac..{0pt}{}{#3}{#4}|#5\biggr
+	)%
+	\endgroup
+}
+\def\res{\mathop{Res}\limits}
+% Symbols \wedge and \vee from mathabx
+% \DeclareFontFamily{U}{matha}{\hyphenchar\font45}
+% \DeclareFontShape{U}{matha}{m}{n}{
+%       <5> <6> <7> <8> <9> <10> gen * matha
+%       <10.95> matha10 <12> <14.4> <17.28> <20.74> <24.88> matha12
+%       }{}
+% \DeclareSymbolFont{matha}{U}{matha}{m}{n}
+% \DeclareMathSymbol{\wedge}         {2}{matha}{"5E}
+% \DeclareMathSymbol{\vee}           {2}{matha}{"5F}
+% \makeatother
+
+%\titlelabel{(\thesubsection)}
+%\titlelabel{(\thesubsection)\quad}
+\usepackage{listings}
+\lstloadlanguages{[5.2]Mathematica}
+\usepackage{babel}
+\newcommand{\ffac}[2]{{(#1)}^{\underline{#2}}}
+\usepackage{color}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{conj}[theorem]{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem*{prompt*}{Prompt}
+\newtheorem*{claim*}{Claim}
+\newtheorem{claim}{Claim}
+%\newcommand{\claim}[1]{\begin{claim*} #1\end{claim*}}
+%organizing theorem environments by style--by the way, should we really have definitions (and notations I guess) in proposition style? it makes SO much of our text italicized, which is weird.
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem*{notation*}{Notation}
+%FINAL
+\newcommand{\due}{28 March 2018} 
+\RequirePackage{geometry}
+\geometry{margin=.7in}
+\usepackage{todonotes}
+\title{MATH 8302 Homework III}
+\author{David DeMark}
+\date{\due}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{David DeMark}
+\chead{\due}
+\lhead{MATH 8302}
+\cfoot{\thepage}
+% %%
+%%
+%%
+%DRAFT
+
+%\usepackage[left=1cm,right=4.5cm,top=2cm,bottom=1.5cm,marginparwidth=4cm]{geometry}
+%\usepackage{todonotes}
+% \title{MATH 8669 Homework 4-DRAFT}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \rhead{David DeMark}
+% \lhead{MATH 8669-Homework 4-DRAFT}
+% \cfoot{\thepage}
+
+%PROBLEM SPEFICIC
+
+\newcommand{\lint}{\underline{\int}}
+\newcommand{\uint}{\overline{\int}}
+\newcommand{\hfi}{\hat{f}^{-1}}
+\newcommand{\tfi}{\tilde{f}^{-1}}
+\newcommand{\tsi}{\tilde{f}^{-1}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\nin}{\centernot\in}
+\newcommand{\seq}[1]{({#1}_n)_{n\geq 1}}
+\newcommand{\Tt}{\mathcal{T}}
+\newcommand{\card}{\mathrm{card}}
+\newcommand{\setc}[2]{\{ #1\::\:#2 \}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\cbal}{\overline{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\cl}{\overline}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\intr}{\mathrm{int}}
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\vect}{\mathrm{Vect}}
+\newcommand{\Top}{\mathrm{Top}}
+\renewcommand{\top}{\Top}
+\newcommand{\hTop}{\mathrm{hTop}}
+\newcommand{\set}{\mathrm{Set}}
+\newcommand{\frp}{\mathop{\large {\mathlarger{*}}}}
+\newcommand{\ondt}{1_{\cdot}}
+\newcommand{\onst}{1_{\star}}
+\newcommand{\bdy}{\partial}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\re}{\mathrm{re}}
+\newcommand{\oX}{\overline{X}}
+\newcommand{\ox}{\overline{x}}
+\newcommand{\tX}{\tilde{X}}
+\newcommand{\tH}{\tilde{H}}
+\newcommand{\tx}{\tilde{x}}
+\newcommand{\hX}{\hat{X}}
+\newcommand{\hx}{\hat{x}}
+\newcommand{\aut}{\mathrm{Aut}}
+\newcommand{\del}{\partial}
+\newcommand{\RP}{{\RR\mathrm{P}}}
+\newcommand{\CP}{{\CC\mathrm{P}}}
+\newcommand{\csm}{\RP^n\#\RP^n}
+\DeclareMathOperator{\coker}{coker}
+\newcommand{\idl}[1]{\langle #1\rangle}
+\renewcommand{\thetheorem}{\arabic{section}.\Alph{theorem}}
+\DeclareMathOperator{\ext}{Ext}
+\newcommand{\tf}{\tilde f}
+\DeclareMathOperator{\gl}{GL}
+\DeclareMathOperator{\spn}{Span}
+\makeatletter
+\newcommand{\extp}{\@ifnextchar^\@extp{\@extp^{\,}}}
+\def\@extp^#1{\mathop{\bigwedge\nolimits^{\!#1}}}
+\makeatother
+\begin{document}
+\maketitle
+\prob{1} \begin{proposition*}
+	Let $X$ and $Y$ be compact, connected smooth $d$-manifolds and let $f:X\to Y$ be a smooth submersion. Then, $f$ is a covering map. 
+\end{proposition*}
+\begin{proof}
+As $f$ is a submersion, we have that at each point $x\in X$, $\d f_x: TX_x\to TY_{f(x)} $ is surjective, i.e. of rank $d$. As $TX_x$ is of dimension $d$, we have that $\d f_x$ is an isomorphism for all $x\in X$. By the inverse function theorem, $f$ is then a local diffeomorphism everywhere. We let $y\in Y$ and claim that $f^{-1}(y)$ is a finite set. As $f$ is a local diffeomorphism, for each $x\in f^{-1}(y)$, there is some open neighborhood $U_x\ni x$ such that $\restr{f}{U_x}$ is a diffeomorphism. Note that necessarily, $f^{-1}(y)\cap U_x=\{x\}$ by bijectivity. We let $x\in V_x\subsetneq U_x$ with $V_x$ open and let $V=(\bigcup_{x\in f^{-1}(y)}V_x)^c$. Then, $\{V\}\bigcup \{U_x\}_{x\in f^{-1}(y)}$ is an open cover of $X$ and hence has a finite subcover by compactness. However, $\bigcup_{x\in f^{-1}(y)}U_x$ is an irredundant union by our observations above and hence $f^{-1}(y)$ is a finite set. As such, we may choose each $U_x$ such that $U_x\cap U_{x'}=\emptyset$ for $x\neq x'$. We let $U=\bigcap_{x\in f^{-1}(y)}f(U_x)$. As $U$ is a finite union of open sets, $U$ is open. Furthermore, as each component of $f^{-1}(U)$ is contained in some set $U_x$, we have that $f$ is diffeomorphic on each component of $f^{-1}(U)$. Finally, as the $U_x$ are disjoint, we have that the preimages of $U$ are disjoint. Thus, $f$ is a covering map.
+\end{proof}
+\prob{2}
+\begin{notation}
+	
+		Throughout this problem, we let $\avec{v_i}=\begin{bmatrix}
+		v_{i1}&v_{i2}&\dots&v_{in}
+		\end{bmatrix}^T\in \RR^n$ and $\vec{v}=(\avec{v_1},\dots,\avec{v_k})\in (\RR^n)^{\times k}$, with identical notational standards for $\vec{w}$ and each $\avec{w_i}$. To emphasize this point, we shall think of $(\RR^n)^{\times k}$ as a space of row vectors with each entry a column vector.
+\end{notation}
+\prt{1}
+\begin{proposition*}
+	Let $S=\{(\avec{v_1},\dots,\avec{v_k})\;:\;\dim\idl{\avec{v_1},\dots,\avec{v}_k}=k\}\subset (\RR^n)^{\times k}$. $S$ is an open set. 
+\end{proposition*}\begin{proof}
+We let $\vec{v}$ be an arbitrary multivector satisfying our stated independence condition. We let $V=(v_{ij})\in \mathrm{Mat}_{n,k}\cong \RR^{nk}$. Then, as the $\avec{v_i}$ are linearly independent, we have that $\mathrm{rank}(V)=k$. Thus, there exists some $I=(i_1,\dots,i_k)$ with $1\leq i_1<\dots<i_k\leq n$ such that the minor $\Delta_I$ taken on rows $i_1,\dots i_k$ has $\Delta_I(V)\neq 0$. As $\Delta_I$ is a polynomial in the entires of $V$, it is a continuous function. We let $d=\Delta_I(V)$. Then, letting $0<\epsilon<d$, we have that $\Delta_I^{-1}((d-\epsilon,d+\epsilon))$ is an open set in $(\RR^{n})^{\times k}$ contained within $S$. As $\vec{v}$ was an arbitrary element of $S$, we now have that $S$ is an open set.\end{proof}
+\prt{2} \begin{proposition*}
+	We let $\sigma: (\RR\setminus \{0\})^k \times S\to \RR^n$ be the map $\sigma:[(t_1,\dots,t_k),(\avec{v_1},\dots,\avec{v_k})]\mapsto \sum_{i=1}^kt_i\avec{v_i}$. Then, $\sigma$ is a submersion.
+\end{proposition*}
+\begin{proof}
+	We note $Z:=(\RR\setminus \{0\})^k \times S$ is the product of an open set in $\RR^k$ with one in $\RR^{n*k}$ and thus $Z\subset \RR^{(n+1)k}$ is open. Thus, we may take the entirety of $Z$ to be a coordinate chart equipped with the identity map. Under this parametrization, we have that for some ordering of $[k]\times [n]$ $\{(\ell m)_j\}_{j\in[(n+1)k]\setminus[k]}$, \begin{equation*}(\d \sigma)_{ij}=\begin{cases}\pydx{\sigma_i}{t_j}&j\leq k\\
+	\pydx{\sigma_i}{v_{(\ell m)_j}}&j>k\end{cases}=\begin{cases}v_{ji
+	}&j\leq k\\
+	t_{\ell_j}&j>k\,\&\,m_j=i\\0&j>k\,\&\,m_j\neq i\end{cases}\end{equation*} 
+	Then, in particular, letting $I$ be the set of row-indices corresponding to $v_{jj}$ with $j$ ranging over $[n]$, we have that the submatrix corresponding to $I$ is $$\begin{bmatrix}t_1&&\\
+	&\ddots&\\
+	&&t_k\end{bmatrix},$$  and hence $\Delta_I(\d \sigma)=t_1\dots t_k$. As each $t_i\neq 0$, we have that $\Delta_I(\d\sigma)\neq0$ and hence $\d \sigma$ has rank $n$ and is indeed surjective. Thus, $\sigma$ is a submersion.
+%	$$\begin{bmatrix}
+%
+%	|&&|&\\
+%	v_1&\dots&v_k\\
+%	|&&|
+%	\end{bmatrix}$$
+\end{proof}
+\prt{3}
+\begin{proposition*}
+	$GL_k(\RR)$ acts on $S$ by the action \[ A(v_1,v_2,\dots,v_k)=(\sum_{j}a_{1j}v_j,\sum_{j}a_{2j}v_j\dots,\sum_ja_{kj}v_j).\] The orbits of the $\gl_k(\RR)$-action on $S$ are in bijection with the $k$-dimensional linear subspaces of $\RR^n$.\end{proposition*}
+\begin{proof}
+	We first construct a map $\Phi$ on the set of orbits of the $\gl_k(\RR)$-action on $S$ to the set of $k$-dimensional linear subspaces of $\RR^n$.
+	We let $\vec{v}\in S$. Then, as $\avec{v_1},\dots,\avec{v_k}$ are linearly independent, they span a $k$-dimensional linear subspace of $\RR^n$. We let $\Phi([\vec{v}])=\spn(\vec{v})$. To show this is well-defined, we let $\vec{w}=A\vec{v}$. Then, $\vec{v}=A^{-1}\vec{w}$, so each $\avec{v_i}$ may be written as a combination of the $\avec{w_j}$'s and vice versa. Thus $\spn \vec{v}=\spn\vec{w}$, so $\Phi$ is well-defined.
+	
+	To construct an inverse to $\Phi$, we let $\Psi$ be any splitting map to $\Phi$. To show that $\Psi$ is indeed an inverse, we suppose $\spn \vec{v}=\spn\vec{w}$. Then, we may write $\avec{w_i}=\sum_kb_{ik}v_k$ for some coefficients $b_{ik}$. Similarly, we may write $\avec{v_i}=\sum_ka_{ik}w_k$. Thus, $AB=1=BA$, so $A\in \gl_k(\RR^n)$ and $[\vec{v}]=[\vec{w}]$ so indeed $\Psi$ is surjective and hence an inverse to $\Phi$.
+
+\end{proof}
+\prt{4}
+\begin{proposition*}
+	Let $X$ be any submanifold of $\RR^n$. Let $Q\subset S$ be the set of $(v_1,\dots,v_k)$ which have span which intersect $X$ transversally. Show that $Q$ is dense in $S$.  
+\end{proposition*}
+
+\prob{3}\begin{prompt*}
+	For $V\cong \RR^n$ and $W\cong \RR^m$, we write $f(v_i)=\sum_j a_{ij}w_j$ where the set of $\{v_i\}$ form a basis for $V$ and $\{w_i\}$ one for $W$. Find the matrix for $\extp^2 f$.
+\end{prompt*}
+\begin{proof}[Response]
+	We have that \begin{align*}\extp^2f(v_i\wedge v_k)&=\left(\sum_ja_{ij}w_j\right)\wedge \left(\sum_{\ell}a_{k\ell}w_{\ell}\right)\\
+	&=\sum_{j,k}a_{ij}a_{k\ell}(w_j\wedge w_\ell)\\
+	&=\sum_{j<k}\left(a_{ij}a_{k\ell}-a_{i\ell}a_{kj}\right)(w_j\wedge w_\ell)
+		\end{align*}
+		Hence, $\left(\extp^2f\right)_{(i,k)(j,\ell)}=a_{ij}a_{k\ell}-a_{i\ell}a_{kj}$
+\end{proof}
+\prt{2}\begin{proposition*}
+	The map $\extp^2:\hom(V,W)\to \hom(\extp^2V,\extp^2W)$ is smooth.
+\end{proposition*}
+\begin{proof}
+	$\hom(V,W)\cong \RR^{nm}$ and $\hom(\extp^2V,\extp^2W)\cong \RR^{{n\choose 2}{m\choose 2}}$ by realizing each element as a matrix for fixed bases of each vector space. Hence, each space is its own coordinate chart. As we have now shown $\extp^2$ to be a polynomial function, it is thus smooth.
+\end{proof}
+
+\end{document}
